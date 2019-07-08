@@ -23,6 +23,8 @@ template<typename T> void PreOrderTraverse(const BSTNode<T> *pRoot);
 template<typename T> void PostOrderTraverse(const BSTNode<T> *pRoot);
 template<typename T> bool Search(const BSTNode<T> *pRoot, const T key);
 template<typename T> bool DeleteNode(BSTNode<T> *pRoot, const T key); //待实现
+template<typename T> bool DeleteTree(BSTNode<T> *pRoot, const T key);
+
 
 /////////////////////////////函数定义/////////////////////////
 template<typename T>
@@ -51,6 +53,8 @@ bool Insert(BSTNode<T>* &pRoot, const T key){
 // 创建二叉搜索树
 template<typename T>
 BSTNode<T> *CreateBinarySearchTree(vector<T> &vec){
+    if (vec.empty())
+        return nullptr;
     BSTNode<T> *pRoot = new BSTNode<T>(vec[0]);
     for (size_t i=1; i<vec.size(); ++i){
         if(!Insert<T>(pRoot, vec[i])){
@@ -133,4 +137,16 @@ template<typename T> bool Search(const BSTNode<T> *pRoot, const T key){
         return Search(pRoot->m_pLeft, key);
     else
         return Search(pRoot->m_pRight, key);
+}
+
+template<typename T> bool DeleteTree(BSTNode<T> *pRoot){
+    if (pRoot != nullptr){
+        BSTNode<T> *pLeft= pRoot->m_pLeft;
+        BSTNode<T> *pRight = pRoot->m_pRight;
+
+        delete pRoot;
+        pRoot = nullptr;
+        DeleteTree<T>(pLeft);
+        DeleteTree<T>(pRight);
+    }
 }
