@@ -15,15 +15,12 @@ bool IsPopOrder(vector<int> &pushVec, vector<int> & popVec){
                 if (push_index == len)
                     break;
                 mystack->push(pushVec[push_index++]);
-
             }
-
             if (mystack->top() != popVec[pop_index]) //这个清况是所有元素都压入栈中，依然没找到下一个弹出的元素
                 break;
             mystack->pop();
             pop_index++;
         }
-
         if (mystack->empty() && pop_index == len){
             result = true;
         }
