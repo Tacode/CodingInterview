@@ -8,25 +8,20 @@ bool IsPopOrder(vector<int> &pushVec, vector<int> & popVec){
     bool result = false;
     int push_index = 0;
     int pop_index = 0;
-    int initPushIndex = 0;
-    int initPopIndex = 0;
     int len = popVec.size();
     if (len>0){
-        while ((pop_index - initPopIndex) < len){
+        while (pop_index < len){
             while (mystack->empty() || mystack->top() != popVec[pop_index]){
-                if ((push_index - initPushIndex) == len)
+                if (push_index == len)
                     break;
                 mystack->push(pushVec[push_index++]);
-
             }
-
             if (mystack->top() != popVec[pop_index]) //这个清况是所有元素都压入栈中，依然没找到下一个弹出的元素
                 break;
             mystack->pop();
             pop_index++;
         }
-        cout << pop_index << endl;
-        if (mystack->empty() && (pop_index-initPopIndex) == len){
+        if (mystack->empty() && pop_index == len){
             result = true;
         }
     }
