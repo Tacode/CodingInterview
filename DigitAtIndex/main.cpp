@@ -1,5 +1,5 @@
 /*
- * 数组序列中的某一位数字
+ * 得到数组序列中的某一位数字
 */
 #include <iostream>
 #include <string>
