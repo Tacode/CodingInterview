@@ -11,7 +11,7 @@ struct BinaryTreeNode
     BinaryTreeNode *m_pRight;
 };
 
-BinaryTreeNode *CreateBinaryTree(int value);
+BinaryTreeNode *CreateBinaryTreeNode(int value);
 BinaryTreeNode *CreateBinaryTree(vector<int> &nums, int i=0);
 void ConnectBinaryTree(BinaryTreeNode *pParent, BinaryTreeNode *pLeft, BinaryTreeNode *pRight);
 void PrintTreeNode(const BinaryTreeNode *pNode);
@@ -21,7 +21,7 @@ void DestroyTree(BinaryTreeNode *pRoot);
 
 #endif
 
-BinaryTreeNode *CreateBinaryTree(int value)
+BinaryTreeNode *CreateBinaryTreeNode(int value)
 {
     BinaryTreeNode *pNode = new BinaryTreeNode();
     pNode->m_nValue = value;
@@ -33,10 +33,12 @@ BinaryTreeNode *CreateBinaryTree(int value)
 // 层次遍历序列重建二叉树
 BinaryTreeNode *CreateBinaryTree(vector<int> &nums, int i)
 {
-    BinaryTreeNode *root = new BinaryTreeNode();
+    if (nums.empty())
+        return nullptr;
     if (nums[i] == '#' || i >= nums.size()){
         return nullptr;
     }
+    BinaryTreeNode *root = new BinaryTreeNode();
     root->m_nValue = int(nums[i]);
     root->m_pLeft = CreateBinaryTree(nums, 2*i+1);
     root->m_pRight = CreateBinaryTree(nums, 2*i+2);
