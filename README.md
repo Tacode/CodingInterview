@@ -1,3 +1,7 @@
-该仓记录每天刷剑指Offer，运行代码在Qt5.8(Linux)
+记录做过的一些算法题(剑指offer+leetcode)
 
-`utils`:实现一些常见的数据结构
+主要包含了 `cpp` 代码和部分  `Python` 代码
+
+程序运行在`Ubuntu16.04`, `cpp`代码是由`Qt5.8`建立的工程编译的, `Python` 代码存在Python文件夹下
+
+`utils`:利用 `c++` 实现了一些常见的数据结构
